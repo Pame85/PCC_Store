@@ -1,0 +1,6 @@
+<h1>Cart</h1>
+<%= form_for(line_item, url: line_item_path(line_item), method: :put) do |f| %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity, min: 1 %>
+  <%= f.submit 'Update' %>
+<% end %>

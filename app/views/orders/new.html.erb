@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 py-5">
+      <h1>New order</h1>
+      <form action="/orders" method="post">
+        <div class="form-inputs">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label for="phone">Phone</label>
+              <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="col-md-6">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <!-- Other address fields here -->
+
+          <label for="subtotal">Subtotal</label>
+          <input type="text" id="subtotal" name="subtotal" readonly value="<%= @shopping_cart.subtotal %>" class="text-end">
+
+          <label for="shipping_cost">Shipping Cost</label>
+          <input type="text" id="shipping_cost" name="shipping_cost" readonly value="<%= @shopping_cart.shipping_cost %>" class="text-end">
+
+          <label for="total">Total</label>
+          <input type="text" id="total" name="total" readonly value="<%= @shopping_cart.total %>" class="text-end">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Buy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

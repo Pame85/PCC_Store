@@ -1,0 +1,70 @@
+<section class="container">
+  <section class="row">
+    <section class="col-md-12 py-5">
+      <div id="<%= dom_id(@order) %>">
+        <p>
+          <strong>Reference:</strong>
+          <%= @order.reference %>
+        </p>
+        <p>
+          <strong>Name:</strong>
+          <%= @order.name %>
+        </p>
+        <p>
+          <strong>Phone:</strong>
+          <%= @order.phone %>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <%= @order.email %>
+        </p>
+        <p>
+          <strong>Address line 1:</strong>
+          <%= @order.address_line_1 %>
+        </p>
+        <p>
+          <strong>Address line 2:</strong>
+          <%= @order.address_line_2 %>
+        </p>
+        <p>
+          <strong>Town:</strong>
+          <%= @order.town %>
+        </p>
+        <p>
+          <strong>Postcode:</strong>
+          <%= @order.postcode %>
+        </p>
+        <p>
+          <strong>Subtotal:</strong>
+          <%= number_to_currency(@order.subtotal) %>
+        </p>
+        <p>
+          <strong>Shipping cost:</strong>
+          <%= number_to_currency(@order.shipping_cost) %>
+        </p>
+        <p>
+          <strong>Total:</strong>
+          <%= number_to_currency(@order.total) %>
+        </p>
+        <p>
+          <strong>Order Date:</strong>
+          <%= @order.created_at.strftime("%B %e, %Y %H:%M %p") %>
+        </p>
+        <p>
+          <strong>Paid:</strong>
+          <%= humanize_boolean(@order.paid) %>
+        </p>
+        <p>
+          <strong>Status:</strong>
+          <%= @order.status.titleize %>
+        </p>
+        <p class="fw-bold">Items</p>
+        <ul>
+          <% @order.order_items.each do |order_item| %>
+            <li><%= order_item.orderable.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </section>
+  </section>
+</section>

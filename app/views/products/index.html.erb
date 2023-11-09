@@ -1,0 +1,15 @@
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="card">
+      <div class="image-container">
+        <img src="<%= product.image %>" alt="<%= product.name %>" style="width:100%">
+      </div>
+      <h1><%= product.name %></h1>
+      <p class="price"><%= number_to_currency(product.price, precision: 2) %></p>
+      <p> Description: <%= product.description %>..</p>
+      <div><%= button_to 'Add to cart', shopping_cart_path(product_id: product), method: 'POST' %></div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Back', root_path %>
