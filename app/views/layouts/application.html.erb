@@ -1,20 +1,324 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Myapp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+<title>HOME PAGE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+</head>
+<body>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>PC COLLECTION<br></b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
+    <a href="#Rental Policy" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Rental Policy</a> 
+    <a href="#How to Rent" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">How to Rent</a> 
+    <a href="#Products" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Products</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>PC Collection</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TRADITIONAL COSTUME </b></h1>
+    <h1 class="w3-xxxlarge w3-text-purple"><b> Rental.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
     <%= yield %>
-  </body>
+  </div>
+
+  
+  <h2 class="w3-center">Products Gallery</h2>
+
+  <div class="w3-content w3-display-container">
+    <img class="mySlides" src="/assets/images/Female_KadazanPenampang.jpg" style="width:25%">
+    <img class="mySlides" src="/assets/images/AdultFemale_KadazanPapar.jpg" alt="Siggah" style="width:25%">
+    <img class="mySlides" src="/assets/images/Baju_Kusai.jpg" style="width:25%">
+    <img class="mySlides" src="/assets/images/Tangkong_Costume.jpg" style="width:25%">
+
+    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+  </div>
+
+  <script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+  </script>
+
+
+
+
+  <!-- Rental Policy -->
+  <div class="w3-container" id="Rental Policy" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Rental Policy.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>We strive to provide the best rental costumes & accessories to our customers. Items are rented ‘As Is’ 
+    so please make sure you are happy with your selection prior to renting the item. NO REFUNDS are given at any time. </p><br><br>
+
+    <button class="w3-button w3-block w3-purple w3-round" onclick="toggleCollapsible('RentalPolicyContent')">Rental Policy</button>
+    <div id="RentalPolicyContent" class="collapsible-content" style="display:none;">
+
+      1. All rentals are for a period of 3 days. Extra days will result in additional charges. Late charges fee will be advised upon the return of the costume to PC Collection. <br><br>
+      
+      2. Customer may reserve the item(s) in advance by paying the partial amount of rental or full amount of rental (to be advised) at the time of the reservation. Terms and conditions of the reservation must comply to this rental policy and any other terms and conditions of the reservation will be advised by PC Collection, during reservation. <br><br>
+      
+      3. Customer agrees that all rentals are 1st come, 1st served & that if full cost of the rental has not been paid then items will not be held. <br><br>
+
+      4. For all transactions (including collection and return of the costumes), customer assumes all responsibility for being aware of store hours & agree that failure to be aware of store hours does not relieve customer of any penalties, late fees or any additional charges. If customer fail to be aware of our opening hours stated in this receipt, and fail to collect the costume on time, PC Collection is not liable for any damages caused and PC Collection is entitled to forfeit the rental, deposit or downpayment. <br><br>
+      
+      5. Customer agrees to not use ANY type of tape, glue, staples, pins or any object on rental items or to alter rental items in any way without express written permission of PC Collection. <br><br>
+      
+      6.  Customer is responsible for full cost of damages(including tape, glue or staple removal) to any item rented, up to & including full cost of replacement of damaged item(This includes shipping cost).  If the deposit does not cover the cost of the damages, PC Collection reserves the right to request additional payment to cover the difference. <br><br>
+      
+      7. Customer agree that neither PC Collection nor its employees is(are) liable in any way for the actions of the customer or anyone the customer allows to use the rented item(s). <br><br>
+      
+      8. Customer agrees to return all packaging & hangers & assumes responsibility for the cost of replacing damaged or missing material. <br><br>
+      
+      9. Booking fee shall be deemed as deposit and will be subjected to this rental policy. <br><br>
+      
+      10.  Customer agrees that there will be absolutely NO REFUND of ANY fees  for ANY reason. Substitutions or use of rental items on days other than those shown on the contract are solely at the discretion of PC Collection. <br><br>
+      
+      11. Customer agrees that any rental fees, late fees, extended rental fees, etc. do(es) not apply to any damages fees  or that any rental fees, late fees, extended rental fees, damage fees, etc. do(es) not apply to any purchase price. <br><br>
+      
+      12. Customer must check the condition of the costume and notify PC Collection. before leaving PC Collection's premise the condition of the costume upon commencement of rental of the costume. <br><br>
+      
+      13. If customer fails to check for existing damages on the costume and/or missing items from the costume and fails to notify PC Collection. before leaving PC Collection.’s premise, PC Collection reserves the right to incur charges for any damages found on the costume when the costume is returned. <br><br>
+      
+      14. All rental transactions require a deposit. If customer fails to pay deposit during or before collection, PC Collection is entitled to forfeit the rental, deposit and/or downpayment by customer. <br><br>
+      
+      15. PC Collection is entitled to forfeit all rental, deposit and/or downpayment if this contract is cancelled by customer. <br><br>
+      
+      16. The choice of refund method for deposit shall be solely decided by PC Collection either by cash or bank in. Bank in typically takes 7 days. However, if PC Collection Sdn Bhd fails to bank in the deposit within 7 days, PC Collection shall not be liable for any damages caused to customer due to the failure to bank in within 7 days. <br><br>
+      
+      17. If customer fails to provide the correct bank information to PC Collection for the deposit refund, and PC Collection Sdn Bhd improperly bank in the wrong amount or to the wrong bank , PC Collection is not liable for any damages caused and PC Collection will not compensate the deposit that has been wrongly banked in. Customer cannot request to reimburse the deposit. <br><br>
+    </div>
+  </div>
+  
+  <!-- How to Rent -->
+  <div class="w3-container" id="How to Rent" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>How to Rent. </b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p> Procedure on How to Rent.</p>
+    
+    <button class="w3-button w3-block w3-purple w3-round" onclick="toggleCollapsible('HowToRentContent')">How To Rent</button>
+    <div id="HowToRentContent" class="collapsible-content" style="display:none;">
+
+      1. You are welcome to come early to the shop prior to you event to book the costume. You can book the costume anytime you want. <br><br>
+
+      2. Rental is for a period of 3 days only. Additional days may be subject to additional charges. <br><br>
+      
+      3. Once you have tested the costume , you can book the costume by paying the rental fee. Our booking fee is the rental fee. <br><br>
+
+      4. Do note that only by paying the booking fee, shall the costume be reserved for you on the particular date. <br><br>
+      
+      5. On the day before your event, come to our shop to collect the costume. If you have paid the booking fee, you are only required to pay a deposit. <br><br>
+
+      6. If you have not paid any booking fee, you can rent the costume on the spot provided the costume is available. You must pay the rental fee and the deposit before collecting the costume. <br><br>
+      
+      7. After the event, return our costume within the stipulated time stated on the rental sheet. Late charges will apply if you return the costume late. Other charges may apply as well if the item is damaged. <br><br>
+      
+      8. Once you return the costume, we will refund your deposit.
+    </div>
+    
+    </p>
+    <p><b>Authentic and high quality costumes:</b>:</p>
+  </div>
+
+  <!-- The Costume -->
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="Tangkong.jpg" alt="Tangkong" style="width:100%">
+        <div class="w3-container">
+          <h3>Tangkong</h3>
+          <p class="w3-opacity">Traditional Kadazan Dusun Belt</p>
+          <p>The tangkong is a form of a hip adornment or belt that is worn by the Kadazan-Dusun women with their traditional costume. </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/assets/images/Himpogot.jpg" alt="Himpogot" style="width:100%">
+        <div class="w3-container">
+          <h3>Himpogot</h3>
+          <p class="w3-opacity">Traditional Kadazan Dusun Belt</p>
+          <p>Unlike the tangkong, the himpogot actually worn widely throughout the native tribes of Borneo with their traditional costumes. </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/assets/images/Siggah.jpg" alt="Siggah" style="width:100%">
+        <div class="w3-container">
+          <h3>Siggah</h3>
+          <p class="w3-opacity">Traditional Kadazan Dusun Headgear</p>
+          <p> Made from Dastar Fabric and known as "Sigah" or "Sigar," this traditional headgear is worn ceremonially by the ethnic communities in Sabah. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products / Pricing Tables -->
+  <div class="w3-container" id="Products" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Products.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>We specialize in traditional custom costume ordering. Our rental ranging from traditional costumes to the accessories. If you have a costume in mind, contact us or drop us your message.
+    </p>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Single</li>
+        <li class="w3-padding-16">Single Full Costume</li>
+        <li class="w3-padding-16">24 Hours Rental</li>
+        <li class="w3-padding-16">Full Accessories</li>
+        <li class="w3-padding-16">20% discount</li>
+        <li class="w3-padding-16">Good deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 1,000</h2>
+          <span class="w3-opacity">per costume</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Booking</button>
+        </li>
+      </ul>
+    </div>
+        
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-black w3-xlarge w3-padding-32">Couple</li>
+        <li class="w3-padding-16">Couple Set Full Costume</li>
+        <li class="w3-padding-16">48 Hours Rental</li>
+        <li class="w3-padding-16">Full Accessories</li>
+        <li class="w3-padding-16">25% discount</li>
+        <li class="w3-padding-16">GREAT deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 1,500</h2>
+          <span class="w3-opacity">per set costume</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-black w3-padding-large w3-hover-white">Booking</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Do you want us to style your costume? Fill out the form and fill us in with the details :) We love meeting new people!</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-purple w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+  <!-- Back to Top Button -->
+<button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">Top</button>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="PC Collection" target="_blank" class="w3-hover-opacity">PC Collection</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+function toggleCollapsible(contentId) {
+  var content = document.getElementById(contentId);
+  if (content.style.display === "none" || content.style.display === "") {
+    content.style.display = "block";
+  } else {
+    content.style.display = "none";
+  }
+}
+
+// JavaScript function to scroll back to the top of the page
+function scrollToTop() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+}
+
+// Show/hide the "Back to Top" button based on scroll position
+window.onscroll = function() {
+  var btn = document.getElementById("backToTopBtn");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+}
+</script>
+
+</body>
 </html>
-
-

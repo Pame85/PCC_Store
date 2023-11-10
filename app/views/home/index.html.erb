@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Welcome to My App</title>
+  <title></title>
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to My App</h1>
+    <h1></h1>
 
     <% if user_signed_in? %>
       <p>Welcome, <%= current_user.email %>! <br>
@@ -16,21 +16,18 @@
       <p><%= link_to 'Sign up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %></p>
     <% end %>
 
-    <div class="card-container">
+    <h2>All Products</h2>
+    <ul>
       <% @products.each do |product| %>
-        <div class="card">
-          <div class="image-container">
-            <%= image_tag(product.image, class: "card-img-top", style: "width:100%" ) if product.image.attached? %>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title"><%= product.name %></h1>
-            <p class="card-text"><%= product.description %></p>
-            <p class="card-text lead"><%= number_to_currency(product.price) %></p>
-            <div><%= button_to 'Add to cart', shopping_cart_path(product_id: product), method: 'POST', class: 'btn btn-primary' %></div>
-          </div>
-        </div>
+        <li>
+          <strong><%= link_to product.name, product_path(product) %></strong>: <%= product.description %>
+        </li>
       <% end %>
-    </div>
+    </ul>
 
+    <% if user_signed_in? %>
+      <%= link_to 'Create a New Product', new_product_path %>
+    <% end %>
+  </div>
 </body>
 </html>
