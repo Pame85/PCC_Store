@@ -1,25 +1,16 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :products
-  has_many :line_items
-  
-  # has_one :cart, dependent: :destroy
+  has_many :shopping_cart_items
+  has_one :shopping_cart, dependent: :destroy
 
-  # before_destroy :clear_cart
+  after_create :create_shopping_cart
 
-  # after_create :create_cart
+  private
 
-  # private
-
-  # def create_cart
-  #   Cart.create(user: self)
-  # end
-
-  # def clear_cart
-  #   if cart
-  #     cart.destroy
-  #   end
-  # end
+  def create_shopping_cart
+    Cart.create(user: self)
+  end
 end

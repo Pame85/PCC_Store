@@ -16,18 +16,21 @@
       <p><%= link_to 'Sign up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %></p>
     <% end %>
 
-    <h2>All Products</h2>
-    <ul>
+    <div class="card-container">
       <% @products.each do |product| %>
-        <li>
-          <strong><%= link_to product.name, product_path(product) %></strong>: <%= product.description %>
-        </li>
+        <div class="card">
+          <div class="image-container">
+            <%= image_tag(product.image, class: "card-img-top", style: "width:100%" ) if product.image.attached? %>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title"><%= product.name %></h1>
+            <p class="card-text"><%= product.description %></p>
+            <p class="card-text lead"><%= number_to_currency(product.price) %></p>
+            <div><%= button_to 'Add to cart', shopping_cart_path(product_id: product), method: 'POST', class: 'btn btn-primary' %></div>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
 
-    <% if user_signed_in? %>
-      <%= link_to 'Create a New Product', new_product_path %>
-    <% end %>
-  </div>
 </body>
 </html>

@@ -1,14 +1,14 @@
 class SessionsController < Devise::SessionsController
     def destroy
-      clear_cart_session
+      clear_shopping_cart_session
       super
     end
   
     private
   
-    def clear_cart_session
-      current_user.cart.destroy if current_user.cart.present?
-      session.delete(:cart_id)
+    def clear_shopping_cart_session
+      current_user.shopping_cart.destroy if current_user.shopping_cart.present?
+      session.delete(:shopping_cart_id)
     end
   end
   
